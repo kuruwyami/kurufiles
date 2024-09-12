@@ -1,0 +1,59 @@
+[aws]
+disabled = true
+
+[character]
+format = "|"
+success_symbol = "❯❯(bold green) "
+error_symbol = "|(bold red) "
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style) "
+truncation_length = 4
+truncate_to_repo = false
+truncation_symbol = "…/"
+
+[git_status]
+disabled = true
+
+[hostname]
+disabled = false
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[time]
+disabled = false
+time_format = "%H:%M"
+utc_time_offset = "local"
+
+[username]
+style_root = "green bold"
+format = " [$user]($style) "
+disabled = false
+show_always = true
+
+[git_branch]
+symbol = " "
+truncation_length = 20
+truncation_symbol = "…"
+style="bold purple"
+
+[rust]
+format = "via [⚙️ $version](bold red)"
+
+[python]
+pyenv_version_name = true
+
+[nodejs]
+format = "via [ $version](bold green) "
+
+[[battery.display]] # 'bold red' style and discharging_symbol when capacity is between 0% and 10%
+threshold = 10
+style = 'bold red'
+
+
+[[battery.display]] # 'bold yellow' style and 💦 symbol when capacity is between 10% and 30%
+threshold = 30
+style = 'bold red'
+discharging_symbol = ''

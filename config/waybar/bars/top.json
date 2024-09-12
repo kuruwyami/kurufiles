@@ -1,0 +1,157 @@
+{
+  "layer": "top",
+  "position": "top",
+  "gtk-layer-shell": true,
+  "modules-left": [ 
+    "network",
+    "bluetooth",
+    "backlight",
+    "custom-updates"
+  ],
+  "modules-center": [
+  "hyprland/workspaces"      
+  ],
+  "modules-right": [
+     "tray",
+     "clock",
+     "battery",
+     "pulseaudio",
+     "pulseaudio#mic",
+     "custom/qs",
+     "custom-weather"
+   ],
+  "hyprland/workspaces": {
+    "format":"{icon}",
+    "format-icons": {
+    "urgent": "  ",
+    "active": "  ",
+    "default": "  "
+    },
+    "on-click": "activate"
+ 
+  },
+  "tray": {
+    "spacing": 8,
+    "icon-size": 15,
+    "show-passive-items": true
+
+  },
+"pulseaudio#mic": {
+    "format": "|{format_source}",
+    "format-source": "  {volume}",
+    "format-source-muted": "",
+    "on-click": "pactl set-source-mute 0 toggle",
+    "on-scroll-down": "pactl set-source-volume 0 -1%",
+    "on-scroll-up": "pactl set-source-volume 0 +1%"
+  },
+  "pulseaudio": {
+    "format": "| {icon}  {volume}",
+    "format-bluetooth": "{icon}  {volume}",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "headphones": "",
+      "handsfree": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "on-click-middle": "pavucontrol",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
+    "smooth-scrolling-threshold": 1
+  },
+
+  "network": {
+    "format-wifi": "   {essid}  󱑤  {bandwidthDownBits} |",
+    "format-ethernet": " 󰈀 {bandwidthDownBits}",
+    "format-disconnected": " 󱛅 ",
+    "format-linked": " 󱚸 ",
+    "tooltip-format": "{ipaddr}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)   \n{ipaddr} | {frequency} MHz{icon} \n {bandwidthDownBits}   {bandwidthUpBits}   ",
+    "tooltip-format-ethernet": "{ifname} 󰈀 \n{ipaddr} | {frequency} MHz{icon} \n {bandwidthDownBits}  {bandwidthUpBits}  ",
+    "tooltip-format-disconnected": "Not Connected to any type of Network",
+    "on-click": "pgrep -x rofi &>/dev/null && notify-send rofi || networkmanager_dmenu"
+  },
+"backlight": {
+	"device": "intel_backlight",
+	"format": "| {icon}  {percent}",
+	"format-icons": ["", ""]
+},
+
+    "battery": {
+	"interval": 60,
+	"states": {
+		"warning": 30,
+		"critical": 15
+	},
+	"format": "| {icon}  {capacity}%",
+	"format-icons": ["", "", "", "", ""],
+	"format-charging":["", "", "", "", ""],
+	
+	"max-length": 25
+},
+
+  "memory": {
+    "format": "{}% "
+  },
+  "disk": {
+    "interval": 600,
+    "format": "{percentage_used}% ",
+    "path": "/"
+  },
+  "cpu": {
+    "format": "{usage}% ",
+    "on-click": "exec btop"
+  },
+  "hyprland/submap": {
+    "format": "{}",
+    "tooltip": false
+  }, 
+  "clock": {
+    "format": "|   {:%H:%M}",
+    "format-alt": "|{:%A, %B %d, %Y (%R)}",
+    "tooltip-format": "|<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "on-middle-click": "ags -t datemenu",
+      "on-click-right": "calendar",
+      "format": {
+        "today": "<span color='#a6e3a1'><b><u>{}</u></b></span>"
+      }
+    }
+  },
+  "bluetooth": {
+    "format-on": " Enabled |",
+    "format-off": " Disabled |",
+    "format-disabled": "",
+    "format-connected": " Connected |",
+    "format-connected-battery": " { device_battery_percentage}% |",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "rofi-bluetooth -config ~/.config/rofi/menu.d/network.rasi -i"
+  },
+      },
+       "custom/updates": {
+       "format": "| {icon} {} ",
+       "return-type": "json",
+       "format-icons": {
+           "has-updates": "",
+           "updated": "",
+           "updated": "",
+          "interval": 3600,
+       },
+       "exec-if": "which waybar-module-pacman-updates",
+       "exec": "waybar-module-pacman-updates",
+       "on-click": "kitty -e paru"
+       }
+}

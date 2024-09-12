@@ -1,0 +1,128 @@
+@import "./themes/latte.css";
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 11px;
+    /* font-weight: bold; */
+   border:2px @foreground;
+   border-radius: 19px;
+   padding: 1;
+   margin-right:1;
+   margin-left:1;
+
+}
+
+window#waybar {
+    background-color: @background;
+    border-radius: 10px;
+    min-height:9px;
+    border:2px solid @foreground;
+    
+}
+
+
+.modules-right {
+    font-size: 10px;
+    margin-right: 0.5rem;
+}
+.modules-left {
+    margin-left: 0.5rem;
+}
+tooltip {
+    background: @background;
+    border-radius: 10px;
+}
+tooltip label {
+    color: @foreground;
+    background-color: @bacground;
+    border-radius: 10px;
+}
+tooltip * {
+    border-radius: 10px;
+}
+#workspaces button {
+    margin: 0;
+    color: @foreground;
+    font-weight: bolder;
+    font-style: normal;
+    margin: 0.2rem 0.1rem;
+    border-radius: 20px;
+}
+button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: inherit;
+}
+#workspaces button.active {
+    color: @foreground;  
+    transition: all 0.1s ease-in-out;
+}
+#bluetooth{
+color: @foreground;
+
+}
+
+#clock,
+#custom-weather {
+    font-family: "GE Inspira";
+    font-weight: bolder;
+    color: @foreground;
+}
+
+#clock {
+    padding: 0 0 0 1.5em;
+}
+#custom-weather {
+    padding: 0 1.5em 0 0.5em;
+}
+#memory {
+    color: @foreground;
+    padding: 0 0.3em;
+}
+
+#pulseaudio {
+    margin: 0;
+    padding: 0 0.5em 0 0.4em;
+    color: @foreground;
+}
+
+#backlight {
+    margin: 0;
+    padding: 0 0.5em 0 0.4em;
+    color: @foreground;
+}
+#cpu {
+    margin: 0;
+    padding: 0 0.1em 0 0.1em;
+    color: #a9b665;
+}
+#network {
+    margin: 0;
+    padding: 0 0.4em 0 0.5em;
+    color: @foreground;
+}
+#custom-cycle_wall {
+    margin: 0;
+    padding: 0 0.5em;
+    color: #d3869b;
+}
+
+#language {
+    margin: 0;
+    padding: 0 0.1em;
+    color: @foreground;
+}
+#tray {
+    margin: 0;
+    padding: 0 0.2em;
+    color: @foreground;
+}
+#battery {
+    color: @cursor;
+}
+#custom-weather {
+    color: @foreground;
+}
+#custom-updates{
+color: @cursor;
+}
